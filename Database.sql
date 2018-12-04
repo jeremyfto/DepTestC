@@ -18,13 +18,13 @@ USE `cexam_retake`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `activities`
+-- Table structure for table `Activities`
 --
 
-DROP TABLE IF EXISTS `activities`;
+DROP TABLE IF EXISTS `Activities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `activities` (
+CREATE TABLE `Activities` (
   `activityId` int(11) NOT NULL AUTO_INCREMENT,
   `activityName` varchar(255) DEFAULT NULL,
   `duration` varchar(255) DEFAULT NULL,
@@ -36,57 +36,57 @@ CREATE TABLE `activities` (
   `userId` int(11) NOT NULL,
   PRIMARY KEY (`activityId`,`userId`),
   KEY `fk_Activities_users1_idx` (`userId`),
-  CONSTRAINT `fk_Activities_users1` FOREIGN KEY (`userId`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_Activities_users1` FOREIGN KEY (`userId`) REFERENCES `Users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `activities`
+-- Dumping data for table `Activities`
 --
 
-LOCK TABLES `activities` WRITE;
+LOCK TABLES `Activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
-INSERT INTO `activities` VALUES (6,'test','test Hours','I DO THIS EVERY DAY','2018-11-24 15:24:00','2342-03-24','2018-11-24 17:30:43','2018-11-24 17:30:43',3),(7,'YELLING','24 Hours','I DO THIS EVERY DAY','2018-11-24 14:32:00','2024-01-01','2018-11-24 18:43:20','2018-11-24 18:43:20',3);
+INSERT INTO `Activities` VALUES (6,'test','test Hours','I DO THIS EVERY DAY','2018-11-24 15:24:00','2342-03-24','2018-11-24 17:30:43','2018-11-24 17:30:43',3),(7,'YELLING','24 Hours','I DO THIS EVERY DAY','2018-11-24 14:32:00','2024-01-01','2018-11-24 18:43:20','2018-11-24 18:43:20',3);
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `joinact`
+-- Table structure for table `JoinAct`
 --
 
-DROP TABLE IF EXISTS `joinact`;
+DROP TABLE IF EXISTS `JoinAct`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `joinact` (
+CREATE TABLE `JoinAct` (
   `joinactId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `activityId` int(11) NOT NULL,
   PRIMARY KEY (`joinactId`,`userId`,`activityId`),
   KEY `fk_table2_activities1_idx` (`activityId`),
   KEY `fk_table2_users` (`userId`),
-  CONSTRAINT `fk_table2_Activities1` FOREIGN KEY (`activityId`) REFERENCES `activities` (`activityid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_table2_users` FOREIGN KEY (`userId`) REFERENCES `users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_table2_Activities1` FOREIGN KEY (`activityId`) REFERENCES `Activities` (`activityid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_table2_users` FOREIGN KEY (`userId`) REFERENCES `Users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `joinact`
+-- Dumping data for table `JoinAct`
 --
 
-LOCK TABLES `joinact` WRITE;
+LOCK TABLES `JoinAct` WRITE;
 /*!40000 ALTER TABLE `joinact` DISABLE KEYS */;
-INSERT INTO `joinact` VALUES (16,3,6),(15,3,7);
+INSERT INTO `JoinAct` VALUES (16,3,6),(15,3,7);
 /*!40000 ALTER TABLE `joinact` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `Users`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `Users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `users` (
+CREATE TABLE `Users` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(255) NOT NULL,
   `LastName` varchar(255) NOT NULL,
@@ -99,12 +99,12 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `Users`
 --
 
-LOCK TABLES `users` WRITE;
+LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'Jeremy','Felts','jeremyfto@hotmail.com','SmitePro12','2018-11-24 15:35:06','2018-11-24 15:35:06');
+INSERT INTO `Users` VALUES (3,'Jeremy','Felts','jeremyfto@hotmail.com','SmitePro12','2018-11-24 15:35:06','2018-11-24 15:35:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
