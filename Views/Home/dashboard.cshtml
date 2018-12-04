@@ -1,0 +1,36 @@
+@{
+    List<Activitys> Activites = Model.AllActivities;
+    JoinAct CurUser = ViewBag.CurUser;
+}
+@model IndexView
+<h1>Dojo Activity Center</h1>
+<a href="/success">Home</a><a href="/logout">Logout</a>
+<table>
+    <thead>
+        <th>Activity</th>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @foreach(Activitys Cur in Activites){
+            <tr>
+            <td>@Cur.activityName</td>
+            <td>@Cur.setdate.ToString("M/dd") &#64 @Cur.settime.ToString("hh:mm tt")</td>
+            <td>@Cur.duration</td>
+            <td>@Cur.User.FirstName</td>
+            <td>@Cur.Roster.Count</td>
+            <td>@if (@ViewBag.AllLikedPost.Contains(@Cur.activityId) == false){
+                <form action="/join" method="post">
+                            <input type="hidden" asp-for="FormJoinAct.userId" value="@Model.IDXID">
+                            <input type="hidden" name="FormJoinAct.activityId" value="@Cur.activityId">
+                            <input type="submit" value="Join">
+                        </form>
+                    }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

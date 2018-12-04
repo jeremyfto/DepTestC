@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login/Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    @{
+        List<User> Users = Model.AllUsers;
+    }
+    @model IndexView
+    @foreach(User Cur in Users){
+        <p>@Cur.FirstName</p>
+    }
+    <div>
+        <form action="Register" method="post">
+            <span asp-validation-for="FormUser.FirstName"></span>
+            <label asp-for="FormUser.FirstName">First Name</label>
+            <input type="text" asp-for="FormUser.FirstName">
+            <br>
+            <span asp-validation-for="FormUser.LastName"></span>
+            <label asp-for="FormUser.LastName">Last Name</label>
+            <input type="text" asp-for="FormUser.LastName">
+            <br>
+            <span asp-validation-for="FormUser.Email"></span>
+            <label asp-for="FormUser.Email">Email</label>
+            <input type="text" asp-for="FormUser.Email">
+            <br>
+            <span asp-validation-for="FormUser.password"></span>
+            <label asp-for="FormUser.password">Password</label>
+            <input type="password" asp-for="FormUser.password">
+            <br>
+            <label asp-for="FormUser.ConfirmPass">Confirm Password</label>
+            <input type="password" asp-for="FormUser.ConfirmPass">
+            <br>
+            <input type="submit" value="Sign up Now">
+        </form>
+    </div>
+    <div>
+        <form action="Login" method="post">
+            <label asp-for="FormUser.Email">Email</label>
+            <input type="text" asp-for="FormUser.Email">
+            <br>
+            <span asp-validation-for="FormUser.password"></span>
+            <label asp-for="FormUser.password">Password</label>
+            <input type="password" asp-for="FormUser.password">
+            <br>
+            <input type="submit" value="Sign in Now">
+        </form>
+    </div>
+</body>
+</html>

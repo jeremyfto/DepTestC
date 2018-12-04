@@ -1,0 +1,19 @@
+
+@{
+    List<Activitys> act = Model.AllActivities;
+    }
+<h1>Dojo Activity Center</h1>
+<a href="/success">Home</a><a href="/logout">Logout</a>
+
+
+@foreach(Activitys Cur in act){
+    <h3>@Cur.activityName</h3>
+    <p>Event Coordinator: @Cur.User.FirstName</p>
+    <p>Description:</p><p>@Cur.desc</p>
+    <p>Participants:</p>
+    @if (@ViewBag.Participants != null){
+    @foreach(string use in @ViewBag.Participants){
+    <p>@use</p>
+    }
+}
+}

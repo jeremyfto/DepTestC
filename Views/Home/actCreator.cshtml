@@ -1,0 +1,32 @@
+@model IndexView
+<div>
+    <form action="/actCre" method="post">
+        <span asp-validation-for="FormActivity.activityName"></span>
+        <label asp-for="FormActivity.activityName">Title:</label>
+        <input type="text" asp-for="FormActivity.activityName">
+        <br>
+        <span asp-validation-for="FormActivity.duration"></span>
+        <label asp-for="FormActivity.duration">Duration</label>
+        <input type="text" asp-for="FormActivity.duration">
+        <br>
+        <select name="FormActivity.timemeasure">
+            <option value="Minutes">Minutes</option>
+            <option value="Hours">Hours</option>
+            <option value="Days">Days</option>
+        </select>
+        <br>
+        <span asp-validation-for="FormActivity.setdate"></span>
+        <label asp-for="FormActivity.setdate">setdate</label>
+        <input type="date" asp-for="FormActivity.setdate">
+        <br>
+        <span asp-validation-for="FormActivity.settime"></span>
+        <label asp-for="FormActivity.settime">Time:</label>
+        <input type="time" asp-for="FormActivity.settime">
+        <br>
+        <span asp-validation-for="FormActivity.desc"></span>
+        <label asp-for="FormActivity.desc">Description:</label>
+        <input type="text" asp-for="FormActivity.desc">
+        <br>
+        <input type="submit" value="Sign up Now">
+    </form>
+</div>
